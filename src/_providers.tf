@@ -5,73 +5,47 @@ terraform {
       source  = "massdriver-cloud/massdriver"
       version = "~> 1.0"
     }
-    # aws = {
-    #   source  = "hashicorp/aws"
-    #   version = "~> 4.0"
-    # }
-    # azurerm = {
-    #   source  = "hashicorp/azurerm"
-    #   version = "~> 3.0"
-    # }
-    # google = {
-    #   source  = "hashicorp/google"
-    #   version = "~> 4.0"
-    # }  
-    # google-beta = {
-    #   source  = "hashicorp/google-beta"
-    #   version = "~> 4.0"
-    # }  
-    # helm = {
-    #   source  = "hashicorp/helm"
-    #   version = "~> 2.0"
-    # }    
-    # kubernetes = {
-    #   source  = "hashicorp/kubernetes"
-    #   version = "~> 2.0"
-    # }     
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 4.0"
+    }
+    google-beta = {
+      source  = "hashicorp/google-beta"
+      version = "~> 4.0"
+    }
+    null = {
+      source  = "hashicorp/null"
+      version = "~> 3.0"
+    }
   }
 }
 
-# provider "aws" {
-#   region     = var.network.specs.aws.region
-#   assume_role {
-#     role_arn    = var.aws_authentication.data.arn
-#     external_id = var.aws_authentication.data.external_id
-#   }
-#   default_tags {
-#     tags = var.md_metadata.default_tags
-#   }
-# }
+locals {
+  project_id      = var.gcp_authentication.data.project_id
+  gcp_credentials = jsonencode(var.gcp_authentication.data)
+  gcp_region      = var.subnetwork.specs.gcp.region
+  # locations can be multi-region or single region
+  # multi-region : us-central, europe-west
+  # single region: us-west1
+  # by using a location, an entire region can go down without losing data or service
+  # and Firestore manages that for you
+  human_location_to_gcp_location = {
+    # nam5 multi-region
+    "US" = "us-central"
+    # eur3 multi-region
+    "Europe" = "europe-west"
+  }
+  gcp_location = lookup(local.human_location_to_gcp_location, var.gcp_location)
+}
 
-# provider "azurerm" {
-#   features {}
+provider "google" {
+  project     = local.project_id
+  credentials = local.gcp_credentials
+  region      = local.gcp_region
+}
 
-#   client_id       = var.azure_service_principal.data.client_id
-#   tenant_id       = var.azure_service_principal.data.tenant_id
-#   client_secret   = var.azure_service_principal.data.client_secret
-#   subscription_id = var.azure_service_principal.data.subscription_id
-# }
-
-# provider "google" {
-#   project     = var.gcp_authentication.data.project_id
-#   credentials = jsonencode(var.gcp_authentication.data)
-#   region      = var.mrc.specs.gcp.region
-# }
-
-# provider "google-beta" {
-#   project     = var.gcp_authentication.data.project_id
-#   credentials = jsonencode(var.gcp_authentication.data)
-#   region      = var.mrc.specs.gcp.region
-# }
-
-# provider "helm" {
-#   kubernetes {
-#     config_context = "default"
-#     config_path = "kube.yaml"
-#   }
-# }
-
-# provider "kubernetes" {
-#   config_context = "default"
-#   config_path = "kube.yaml"
-# }
+provider "google-beta" {
+  project     = local.project_id
+  credentials = local.gcp_credentials
+  region      = local.gcp_region
+}

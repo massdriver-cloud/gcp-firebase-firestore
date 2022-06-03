@@ -1,10 +1,4 @@
-# Operator Guide
-
-This is the guide for your bundle. It will appear under the `guide` button in Massdriver.
-
-Use it to describe to users how the bundle works, use cases for the bundle, and event examples.
-
-<!-- We may want to polish this for template before releasing --> 
+# Operator Guide for "{type}"
 
 ## TODO:
 
@@ -33,10 +27,20 @@ _Describe the guided configs_
 ### How It Works
 
 _Describe how it works_
++ Creates a Firebase project (connects to a GCP project)
++ Creates a Firestore database
++ Makes an artifact authentication that has the `firebase-config.json` inside of it
 
 #### Best Practices
 
-#### Security 
++ We only support two _locations_ for Firestore.
+  + Both _locations_ are multi-region
+  + US     => us-central  => nam5
+  + Europe => europe-west => eur3
++ This means that if a region in GCP goes down, NO data will be lost
++ Firebase manages this regional (not zonal) failover for you
+
+#### Security
 
 #### Auditing
 
@@ -46,7 +50,10 @@ _Describe how it works_
 
 ### Trade-offs
 
-_List trade offs made with this bundle_
++ Only one per GCP project can be used
+  + Firestore is one per GCP project
++ Realtime database is not supported
++ Datastore mode is not supported
 
 ### Permissions
 

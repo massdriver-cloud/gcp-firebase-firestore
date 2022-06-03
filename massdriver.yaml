@@ -1,66 +1,51 @@
-# This file will be used to generate all of the schema-*.json files in a bundle
 schema: draft-07
-name: "gcp-firebase-firestore"
-description: ""
-ref: github.com/YOUR_NAME_HERE/gcp-firebase-firestore
-access: "public"
-type: "bundle"
+name: gcp-firebase-firestore
+description: "GCP Firestore Database"
+ref: github.com/massdriver-cloud/massdriver-bundles
+access: public
+type: bundle
 
 steps:
   - path: src
     provisioner: terraform
 
-# schema-params.json
-# JSON Schema sans-fields above
 params:
   examples:
-    - foo: US-West 2 VPC
-    - foo: US-East 1 VPC
+    - __name: Multi-Region - US
+      gcp_location: US
+    - __name: Multi-Region - Europe
+      gcp_location: Europe
   required:
-    - foo
+    - gcp_location
   properties:
-    foo:
+    gcp_location:
+      # https://firebase.google.com/docs/projects/locations#default-cloud-location
       type: string
-      title: Foo
-      description: Name of gcp-firebase-firestore
-      default: ""
-      examples:
-        - US-West 2 VPC
-        - US-East 1 VPC
+      title: GCP Location
+      description: Name of GCP Location for the multi-regional Firestore database.
+      default: US
+      enum:
+        - US
+        - Europe
 
-# schema-connections.json
-# Named list of input connections (artifacts) (map[name]artifact)
 connections:
-  properties: {}
-  # required:
-  # - aws_authentication
-  # - network
-  # properties:
-  #   aws_authentication:
-  #     $ref: massdriver/aws-iam-role
-  #   network:
-  #     $ref: massdriver/aws-regional-cloud
+  required:
+    - subnetwork
+    - gcp_authentication
+  properties:
+    subnetwork:
+      $ref: massdriver/gcp-subnetwork
+    gcp_authentication:
+      $ref: massdriver/gcp-service-account
 
-# schema-artifacts.json
-# Named list of output artifacts  (map[name]artifact)
 artifacts:
-  properties: {}
-  # required:
-  #   - network
-  # properties:
-  #   network:
-  #     $ref: massdriver/aws-regional-cloud
+  required:
+    - authentication
+  properties:
+    authentication:
+      $ref: massdriver/gcp-firebase-authentication
 
-# schema-ui.json
-# List of form customizations for params-schema
 ui:
   ui:order:
+    - gcp_location
     - "*"
-  ## set top level ui:wiget
-  # secret_key:
-  #    ui:widget: "password"
-  ## Set key in an array of objects
-  # secrets:
-  #   items:
-  #     mdKeyId:
-  #       ui:widget: "hidden"
