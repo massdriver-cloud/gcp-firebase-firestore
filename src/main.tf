@@ -53,5 +53,3 @@ resource "google_firebase_web_app" "main" {
     google_firebase_project.main
   ]
 }
-
-
