@@ -11,5 +11,5 @@ module "apis" {
   ]
   # 90 seconds failed multiple times
   # specifically the app engine api takes a while to be ready
-  seconds_to_sleep = 120
+  seconds_to_sleep = 200
 }
