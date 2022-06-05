@@ -1,6 +1,6 @@
 
 module "apis" {
-  source = "../../../provisioners/terraform/modules/gcp-apis"
+  source = "github.com/massdriver-cloud/terraform-google-enable-apis"
   services = [
     # both of these need to be on.... to turn on GCP apis
     # TODO: all a null_resource gcloud command to do it in the module
