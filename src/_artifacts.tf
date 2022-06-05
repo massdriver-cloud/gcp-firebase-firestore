@@ -23,7 +23,7 @@ locals {
   }
 
   data_infrastructure = {
-    grn = google_app_engine_application.firestore.id
+    id = google_app_engine_application.firestore.id
   }
 
   artifact_authentication = {
