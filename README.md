@@ -1,8 +1,3 @@
-
-
-
-
-
 [![Massdriver][logo]][website]
 
 # gcp-firebase-firestore
@@ -13,11 +8,6 @@
 [![Stargazers][stars_shield]][stars_url]
 [![Issues][issues_shield]][issues_url]
 [![MIT License][license_shield]][license_url]
-
-<!--
-##### STILL NEED TO GET SLACK WORKING ###
-[!["Slack Community"](%s)][slack]
--->
 
 
 GCP Firestore Database
@@ -38,6 +28,23 @@ Our bundles aren't intended to be used locally, outside of testing. Instead, our
 Bundles are the basic building blocks of infrastructure, applications, and architectures in [Massdriver][website]. Read more [here](https://docs.massdriver.cloud/concepts/bundles).
 
 ## Bundle
+
+
+<!-- COMPLIANCE:START -->
+
+Security and compliance scanning of our bundles is performed using [Bridgecrew](https://www.bridgecrew.cloud/). Massdriver also offers security and compliance scanning of operational infrastructure configured and deployed using the platform.
+
+| Benchmark | Description |
+|--------|---------------|
+| [![Infrastructure Security](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/general)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=INFRASTRUCTURE+SECURITY) | Infrastructure Security Compliance |
+| [![CIS GCP](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/cis_gcp)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=CIS+GCP+V1.1) | Center for Internet Security, GCP Compliance |
+| [![PCI-DSS](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/pci)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=PCI-DSS+V3.2) | Payment Card Industry Data Security Standards Compliance |
+| [![NIST-800-53](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/nist)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=NIST-800-53) | National Institute of Standards and Technology Compliance |
+| [![ISO27001](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/iso)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=ISO27001) | Information Security Management System, ISO/IEC 27001 Compliance |
+| [![SOC2](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/soc2)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=SOC2)| Service Organization Control 2 Compliance |
+| [![HIPAA](https://www.bridgecrew.cloud/badges/github/massdriver-cloud/gcp-firebase-firestore/hipaa)](https://www.bridgecrew.cloud/link/badge?vcs=github&fullRepo=massdriver-cloud%2Fgcp-firebase-firestore&benchmark=HIPAA) | Health Insurance Portability and Accountability Compliance |
+
+<!-- COMPLIANCE:END -->
 
 ### Params
 
