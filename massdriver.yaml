@@ -1,7 +1,7 @@
 schema: draft-07
 name: gcp-firebase-firestore
 description: "GCP Firestore Database"
-ref: github.com/massdriver-cloud/gcp-firebase-firestore
+source_url: github.com/massdriver-cloud/gcp-firebase-firestore
 access: public
 type: bundle
 
