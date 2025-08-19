@@ -1,47 +1,48 @@
 schema: draft-07
 name: gcp-firebase-firestore
-description: "GCP Firestore Database"
-source_url: github.com/massdriver-cloud/gcp-firebase-firestore
-access: public
-type: bundle
-
+version: 1.0.0
+description: GCP Firestore Database
+source_url: https://github.com/massdriver-cloud/gcp-firebase-firestore
+type: application
 params:
   examples:
-    - __name: Multi-Region - US
-      gcp_location: US
-    - __name: Multi-Region - Europe
-      gcp_location: Europe
+  - __name: Multi-Region - US
+    gcp_location: US
+  - __name: Multi-Region - Europe
+    gcp_location: Europe
   required:
-    - gcp_location
+  - gcp_location
   properties:
     gcp_location:
-      # https://firebase.google.com/docs/projects/locations#default-cloud-location
       type: string
       title: GCP Location
       description: Name of GCP Location for the multi-regional Firestore database.
       default: US
       enum:
-        - US
-        - Europe
-
+      - US
+      - Europe
 connections:
   required:
-    - subnetwork
-    - gcp_authentication
+  - subnetwork
+  - gcp_authentication
   properties:
     subnetwork:
-      $ref: massdriver/gcp-subnetwork
+      "$ref": massdriver/gcp-subnetwork
     gcp_authentication:
-      $ref: massdriver/gcp-service-account
-
+      "$ref": massdriver/gcp-service-account
 artifacts:
   required:
-    - authentication
+  - authentication
   properties:
     authentication:
-      $ref: massdriver/gcp-firebase-authentication
-
+      "$ref": massdriver/gcp-firebase-authentication
 ui:
   ui:order:
-    - gcp_location
-    - "*"
+  - gcp_location
+  - "*"
+steps:
+- path: src
+  provisioner: opentofu
+  config:
+    checkov:
+      enable: true
