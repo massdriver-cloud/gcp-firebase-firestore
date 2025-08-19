@@ -3,7 +3,6 @@ name: gcp-firebase-firestore
 version: 1.0.0
 description: GCP Firestore Database
 source_url: https://github.com/massdriver-cloud/gcp-firebase-firestore
-type: application
 params:
   examples:
   - __name: Multi-Region - US
