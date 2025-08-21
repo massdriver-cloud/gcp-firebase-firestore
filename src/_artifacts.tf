@@ -38,8 +38,7 @@ locals {
 }
 
 resource "massdriver_artifact" "authentication" {
-  field                = "authentication"
-  provider_resource_id = local.firebase_app_id
-  name                 = "Firebase ${var.md_metadata.name_prefix} (${local.firebase_app_id})"
-  artifact             = jsonencode(local.artifact_authentication)
+  field    = "authentication"
+  name     = "Firebase ${var.md_metadata.name_prefix} (${local.firebase_app_id})"
+  artifact = jsonencode(local.artifact_authentication)
 }
