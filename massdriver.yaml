@@ -26,15 +26,15 @@ connections:
   - gcp_authentication
   properties:
     subnetwork:
-      "$ref": massdriver/gcp-subnetwork
+      "$ref": gcp-subnetwork
     gcp_authentication:
-      "$ref": massdriver/gcp-service-account
+      "$ref": gcp-service-account
 artifacts:
   required:
   - authentication
   properties:
     authentication:
-      "$ref": massdriver/gcp-firebase-authentication
+      "$ref": gcp-firebase-authentication
 ui:
   ui:order:
   - gcp_location

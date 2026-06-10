@@ -21,8 +21,8 @@ terraform {
 }
 
 locals {
-  project_id      = var.gcp_authentication.data.project_id
-  gcp_credentials = jsonencode(var.gcp_authentication.data)
+  project_id      = var.gcp_authentication.project_id
+  gcp_credentials = jsonencode(var.gcp_authentication)
   gcp_region      = var.subnetwork.specs.gcp.region
   # locations can be multi-region or single region
   # multi-region : us-central, europe-west
