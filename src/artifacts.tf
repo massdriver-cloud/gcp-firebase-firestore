@@ -9,7 +9,7 @@ locals {
     service = "Firebase"
   }
 
-  data_authentication = {
+  authentication = {
     firebase_config = {
       appId           = local.firebase_app_id
       apiKey          = data.google_firebase_web_app_config.main.api_key
@@ -22,15 +22,13 @@ locals {
     }
   }
 
-  data_infrastructure = {
+  infrastructure = {
     id = google_app_engine_application.firestore.id
   }
 
   artifact_authentication = {
-    data = {
-      authentication = local.data_authentication
-      infrastructure = local.data_infrastructure
-    }
+    authentication = local.authentication
+    infrastructure = local.infrastructure
     specs = {
       gcp = local.specs_gcp
     }
